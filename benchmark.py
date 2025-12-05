@@ -32,8 +32,9 @@ def benchmark_model(model_path, iterations=100):
     _, height, width, channels = input_details[0]['shape']
     print(f"Model input shape: {height}x{width}x{channels}")
     
-    # Create a random input image
+    # Create a random input image (with seed for reproducibility)
     print(f"Generating random input data...")
+    np.random.seed(42)  # Set seed for reproducible benchmarks
     random_input = Image.fromarray(
         np.random.randint(0, 255, (height, width, channels), dtype=np.uint8)
     )

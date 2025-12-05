@@ -48,8 +48,9 @@ sudo apt-get install -y curl gnupg ca-certificates
 echo -e "${GREEN}Step 3: Adding Coral repository...${NC}"
 echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
 
-# Add Google package signing key
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+# Add Google package signing key (using modern method)
+echo -e "${GREEN}Step 3b: Adding Google package signing key...${NC}"
+curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/coral-edgetpu.gpg
 
 # Update package list again
 echo -e "${GREEN}Step 4: Updating package list with Coral repository...${NC}"

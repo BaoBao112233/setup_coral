@@ -40,7 +40,12 @@ def run_inference(model_path, image_path, labels_path=None, top_k=3):
     
     # Load and resize image
     print(f"Loading image: {image_path}")
-    image = Image.open(image_path).convert('RGB').resize((width, height), Image.LANCZOS)
+    # Use Image.Resampling.LANCZOS for newer Pillow versions, fallback to Image.LANCZOS
+    try:
+        resample = Image.Resampling.LANCZOS
+    except AttributeError:
+        resample = Image.LANCZOS
+    image = Image.open(image_path).convert('RGB').resize((width, height), resample)
     
     # Run inference
     print("Running inference...")
