@@ -35,6 +35,12 @@ The Coral USB Accelerator is a USB accessory with an Edge TPU chip inside that p
    python3 test_coral.py
    ```
 
+4. **Download sample models and test (optional):**
+   ```bash
+   bash download_models.sh
+   python3 classify_image.py --model models/mobilenet_v2_1.0_224_inat_bird_quant_edgetpu.tflite --image test_images/parrot.jpg --labels models/inat_bird_labels.txt
+   ```
+
 ### Manual Installation
 
 If you prefer to install manually or are on a different platform, follow the platform-specific instructions below.
@@ -228,11 +234,26 @@ pip3 install -r requirements.txt
 
 ```
 setup_coral/
-├── README.md              # This file
+├── README.md              # Comprehensive documentation
+├── QUICK_REFERENCE.md     # Quick reference guide
 ├── setup_coral.sh         # Automated setup script for Linux
 ├── test_coral.py          # Test script to verify installation
+├── classify_image.py      # Image classification example
+├── benchmark.py           # Performance benchmarking script
+├── download_models.sh     # Download sample models and test images
 ├── requirements.txt       # Python dependencies
 └── .gitignore            # Git ignore file
+```
+
+After running `download_models.sh`, you'll also have:
+```
+├── models/                # Pre-compiled Edge TPU models
+│   ├── mobilenet_v2_1.0_224_inat_bird_quant_edgetpu.tflite
+│   ├── ssd_mobilenet_v2_coco_quant_postprocess_edgetpu.tflite
+│   ├── inat_bird_labels.txt
+│   └── coco_labels.txt
+└── test_images/           # Sample test images
+    └── parrot.jpg
 ```
 
 ## Performance Modes
