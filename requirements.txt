@@ -1,0 +1,15 @@
+# Coral USB Accelerator Python Requirements
+# Install with: pip3 install -r requirements.txt
+
+# PyCoral - Python library for Coral devices
+--extra-index-url https://google-coral.github.io/py-repo/
+pycoral~=2.0
+
+# TensorFlow Lite runtime
+tflite_runtime
+
+# Optional: Pillow for image processing in examples
+Pillow>=8.0.0
+
+# Optional: NumPy for numerical operations
+numpy>=1.19.0
